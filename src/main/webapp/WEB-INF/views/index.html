@@ -15,14 +15,16 @@
             <th>Manufacturer</th>
             <th>Edit</th>
             <th>Delete</th>
+            <th>Image</th>
         </tr>
         <tr th:each="p : ${products}">
-            <td th:text="${p.getName()}"><a th:href="@{/products/{id}/view(id=${p.getId()})}"></a></td>
-            <td th:text="${p.getPrice()}"></td>
-            <td th:text="${p.getDescription()}"></td>
-            <td th:text="${p.getManufacturer()}"></td>
+            <td th:text="${p.name}"></td>
+            <td th:text="${p.price}"></td>
+            <td th:text="${p.description}"></td>
+            <td th:text="${p.manufacturer}"></td>
             <td><a th:href="@{/products/{id}/edit(id=${p.getId()})}">Edit</a></td>
             <td><a th:href="@{/products/{id}/delete(id=${p.getId()})}">Delete</a></td>
+            <td><img width="100" height="100" th:src="@{'/image/' + ${p.image}}" ></td>
         </tr>
     </table>
     <p>

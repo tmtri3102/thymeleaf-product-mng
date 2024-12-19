@@ -11,8 +11,8 @@ public class ProductService implements IProductService {
     private static final String SELECT_ALL_PRODUCTS = "SELECT * FROM product";
     private static final String FIND_PRODUCT_BY_ID = "SELECT * FROM product WHERE id = ?";
     private static final String FIND_PRODUCT_BY_NAME = "SELECT * FROM product WHERE name = ?";
-    private static final String INSERT_PRODUCTS = "INSERT INTO product(name, price, description, manufacturer) " +
-            "VALUES(?,?,?,?)";
+    private static final String INSERT_PRODUCTS = "INSERT INTO product(name, price, description, manufacturer, image) " +
+            "VALUES(?,?,?,?, ?)";
     private static final String UPDATE_PRODUCT = "update product set name = ?, price = ?, " +
             "description = ?, manufacturer = ? where id = ?";
     private static final String DELETE_PRODUCTS = "DELETE FROM product WHERE id = ?";
@@ -56,6 +56,7 @@ public class ProductService implements IProductService {
             product.setPrice(resultSet.getDouble("price"));
             product.setDescription(resultSet.getString("description"));
             product.setManufacturer(resultSet.getString("manufacturer"));
+            product.setImage(resultSet.getString("image"));
             products.add(product);
         }
     }
@@ -73,7 +74,8 @@ public class ProductService implements IProductService {
                     double price = resultSet.getDouble("price");
                     String description = resultSet.getString("description");
                     String manufacturer = resultSet.getString("manufacturer");
-                    product = new Product(id, name, price, description, manufacturer);
+                    String image = resultSet.getString("image");
+                    product = new Product(id, name, price, description, manufacturer, image);
                 }
             }
         } catch (SQLException e) {
@@ -108,6 +110,7 @@ public class ProductService implements IProductService {
             preparedStatement.setDouble(2, product.getPrice());
             preparedStatement.setString(3, product.getDescription());
             preparedStatement.setString(4, product.getManufacturer());
+            preparedStatement.setString(5, product.getImage());
             preparedStatement.executeUpdate();
             System.out.println(preparedStatement);
         } catch (SQLException e) {

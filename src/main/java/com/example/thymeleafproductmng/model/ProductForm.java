@@ -1,37 +1,31 @@
 package com.example.thymeleafproductmng.model;
 
-public class Product {
+import org.springframework.web.multipart.MultipartFile;
+
+public class ProductForm {
     private int id;
     private String name;
     private double price;
     private String description;
     private String manufacturer;
-    private String image;
+    private MultipartFile image;
 
-    public Product() {
+    public ProductForm() {
     }
-//
-//    public Product(String name, double price, String description, String manufacturer) {
-//        this.name = name;
-//        this.price = price;
-//        this.description = description;
-//        this.manufacturer = manufacturer;
-//    }
 
-    public Product(int id, String name, double price, String description, String manufacturer, String image) {
+    public ProductForm(String name, double price, String description, String manufacturer) {
+        this.name = name;
+        this.price = price;
+        this.description = description;
+        this.manufacturer = manufacturer;
+    }
+
+    public ProductForm(int id, String name, double price, String description, String manufacturer) {
         this.id = id;
         this.name = name;
         this.price = price;
         this.description = description;
         this.manufacturer = manufacturer;
-        this.image = image;
-    }
-
-    public Product(int id, String name, String description, String image) {
-        this.id = id;
-        this.name = name;
-        this.description = description;
-        this.image = image;
     }
 
     public int getId() {
@@ -74,11 +68,11 @@ public class Product {
         this.manufacturer = manufacturer;
     }
 
-    public String getImage() {
+    public MultipartFile getImage() {
         return image;
     }
 
-    public void setImage(String image) {
+    public void setImage(MultipartFile image) {
         this.image = image;
     }
 }

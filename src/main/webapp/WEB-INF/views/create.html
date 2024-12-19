@@ -14,7 +14,7 @@
 </p>
 <div id="form">
     <form th:action="@{/products/save}" th:object="${product}"
-          method="POST" novalidate="novalidate">
+          method="POST" novalidate="novalidate" enctype="multipart/form-data">
         <input type="hidden" th:field="*{id}"/>
         <div>
             <label for="name">Name</label>
@@ -31,6 +31,10 @@
         <div>
             <label for="manufacturer">Manufacturer</label>
             <input type="text" id="manufacturer" th:field="*{manufacturer}"/>
+        </div>
+        <div>
+            <label for="image">Image</label>
+            <input type="file" id="image" th:field="*{image}"/>
         </div>
         <input type="submit" value="Save"/>
     </form>
