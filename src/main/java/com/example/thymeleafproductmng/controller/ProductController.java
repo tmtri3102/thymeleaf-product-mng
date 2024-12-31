@@ -43,12 +43,13 @@ public class ProductController {
     private String fileUpload;
 
     @PostMapping("/save")
-    public ModelAndView createProduct(@ModelAttribute ProductForm productForm) {
+    public ModelAndView createProduct(@ModelAttribute("product") ProductForm productForm) {
         MultipartFile multipartFile = productForm.getImage();
         String fileName = multipartFile.getOriginalFilename();
         try {
             FileCopyUtils.copy(productForm.getImage().getBytes(), new File(fileUpload + fileName));
         } catch (IOException ex) {
+
             ex.printStackTrace();
         }
         Product product = new Product(productForm.getId(), productForm.getName(), productForm.getPrice(),

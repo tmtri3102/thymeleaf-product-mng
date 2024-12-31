@@ -14,87 +14,212 @@
             background-color: #f1f1f1;
         }
 
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 16px;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 24px;
+        }
+
+        .header h3 {
+            font-size: 24px;
+            font-weight: bold;
+            margin: 0;
+        }
+
+        .header a {
+            background-color: #3b82f6;
+            color: white;
+            padding: 8px 16px;
+            border-radius: 4px;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+        }
+
+        .header a:hover {
+            background-color: #2563eb;
+        }
+
         footer {
             margin: 20px 0;
         }
 
-        #products {
-            border-collapse: collapse;
-            width: 60%;
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 24px;
         }
 
-        #products td, #products th {
-            border: 1px solid #ddd;
-            padding: 8px;
+        .product-card {
+            position: relative;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
         }
 
-        #products tr:nth-child(even) {
-            background-color: #f2f2f2;
+        .product-card .image-container {
+            position: relative;
+            height: 256px;
+            overflow: hidden;
         }
 
-        #products tr:hover {
-            background-color: #ddd;
-        }
-
-        #products th {
-            padding-top: 12px;
-            padding-bottom: 12px;
-            text-align: left;
-            background-color: #4CAF50;
-            color: white;
-        }
-
-        input[type=text], input[type=email] {
+        .product-card img {
             width: 100%;
-            padding: 12px;
-            margin: 8px 0;
-            display: inline-block;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            box-sizing: border-box;
+            height: 100%;
+            object-fit: cover;
         }
 
-        input[type=submit] {
-            width: 300px;
-            background-color: #4CAF50;
+        .hover-buttons {
+            position: absolute;
+            top: 8px;
+            right: 8px;
+            display: flex;
+            gap: 8px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .product-card:hover .hover-buttons {
+            opacity: 1;
+        }
+
+        .hover-buttons a {
+            background-color: #3b82f6;
             color: white;
-            padding: 14px 20px;
-            margin: 8px 0;
-            border: none;
+            padding: 8px;
             border-radius: 4px;
-            cursor: pointer;
-            text-align: center;
-        }
-
-        input[type=submit]:hover {
-            background-color: #45a049;
-        }
-
-        #form {
-            width: 500px;
-            border-radius: 5px;
-            background-color: #f2f2f2;
-            padding: 20px;
-        }
-
-        td a {
             text-decoration: none;
-            color: black;
+            transition: background-color 0.3s ease;
         }
 
-        td a:hover {
-            text-decoration: underline;
-            text-underline-offset: 3px;
+        .hover-buttons a:hover {
+            background-color: #2563eb;
         }
 
-        #products .price {
-            text-align: right;
+        .hover-buttons .delete {
+            background-color: #ef4444;
         }
 
-        .notify span {
-            font-size: 15px;
-            color: green;
+        .hover-buttons .delete:hover {
+            background-color: #dc2626;
         }
+
+        .product-info {
+            padding: 16px;
+        }
+
+        .product-info h4 {
+            font-size: 18px;
+            font-weight: bold;
+            margin: 0 0 8px;
+        }
+
+        .product-info p {
+            color: #4b5563;
+            margin: 0 0 8px;
+        }
+
+        .product-info .details {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .product-info .price {
+            font-size: 16px;
+            font-weight: bold;
+            color: #2563eb;
+        }
+
+        .product-info .manufacturer {
+            font-size: 14px;
+            color: #6b7280;
+        }
+
+        /*#products {*/
+        /*    border-collapse: collapse;*/
+        /*    width: 60%;*/
+        /*}*/
+
+        /*#products td, #products th {*/
+        /*    border: 1px solid #ddd;*/
+        /*    padding: 8px;*/
+        /*}*/
+
+        /*#products tr:nth-child(even) {*/
+        /*    background-color: #f2f2f2;*/
+        /*}*/
+
+        /*#products tr:hover {*/
+        /*    background-color: #ddd;*/
+        /*}*/
+
+        /*#products th {*/
+        /*    padding-top: 12px;*/
+        /*    padding-bottom: 12px;*/
+        /*    text-align: left;*/
+        /*    background-color: #4CAF50;*/
+        /*    color: white;*/
+        /*}*/
+
+        /*input[type=text], input[type=email] {*/
+        /*    width: 100%;*/
+        /*    padding: 12px;*/
+        /*    margin: 8px 0;*/
+        /*    display: inline-block;*/
+        /*    border: 1px solid #ccc;*/
+        /*    border-radius: 4px;*/
+        /*    box-sizing: border-box;*/
+        /*}*/
+
+        /*input[type=submit] {*/
+        /*    width: 300px;*/
+        /*    background-color: #4CAF50;*/
+        /*    color: white;*/
+        /*    padding: 14px 20px;*/
+        /*    margin: 8px 0;*/
+        /*    border: none;*/
+        /*    border-radius: 4px;*/
+        /*    cursor: pointer;*/
+        /*    text-align: center;*/
+        /*}*/
+
+        /*input[type=submit]:hover {*/
+        /*    background-color: #45a049;*/
+        /*}*/
+
+        /*#form {*/
+        /*    width: 500px;*/
+        /*    border-radius: 5px;*/
+        /*    background-color: #f2f2f2;*/
+        /*    padding: 20px;*/
+        /*}*/
+
+        /*td a {*/
+        /*    text-decoration: none;*/
+        /*    color: black;*/
+        /*}*/
+
+        /*td a:hover {*/
+        /*    text-decoration: underline;*/
+        /*    text-underline-offset: 3px;*/
+        /*}*/
+
+        /*#products .price {*/
+        /*    text-align: right;*/
+        /*}*/
+
+        /*.notify span {*/
+        /*    font-size: 15px;*/
+        /*    color: green;*/
+        /*}*/
     </style>
 </head>
 <body>

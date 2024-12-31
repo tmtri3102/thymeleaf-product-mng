@@ -2,20 +2,32 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head th:replace="/layout :: head">
     <meta charset="UTF-8">
-    <title>Product list</title>
+<!--    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/js/all.min.js"></script>-->
+
+    <title th:text="#{index.title}">Product list</title>
+
+
+
+
 </head>
 <body>
 <div class="container">
-    <h3>All products</h3>
+    <div class="header">
+        <h3 th:text="#{index.heading}">All products</h3>
+        <a th:href="@{/products/create}" th:text="#{index.addBtn}">Add new product</a>
+        <a href="?lang=en">English</a>
+        <a href="?lang=vi">Vietnamese</a>
+    </div>
+
     <table id="products" class="table table-striped">
         <tr>
-            <th>Name</th>
-            <th>Price</th>
-            <th>Description</th>
-            <th>Manufacturer</th>
-            <th>Edit</th>
-            <th>Delete</th>
-            <th>Image</th>
+            <th th:text="#{index.table.name}">Name</th>
+            <th th:text="#{index.table.price}">Price</th>
+            <th th:text="#{index.table.descriptiton}">Description</th>
+            <th th:text="#{index.table.manufacturer}">Manufacturer</th>
+            <th th:text="#{index.table.edit}">Edit</th>
+            <th th:text="#{index.table.delete}">Delete</th>
+            <th th:text="#{index.table.image}">Image</th>
         </tr>
         <tr th:each="p : ${products}">
             <td th:text="${p.name}"></td>
@@ -24,14 +36,40 @@
             <td th:text="${p.manufacturer}"></td>
             <td><a th:href="@{/products/{id}/edit(id=${p.getId()})}">Edit</a></td>
             <td><a th:href="@{/products/{id}/delete(id=${p.getId()})}">Delete</a></td>
-            <td><img width="100" height="100" th:src="@{'/image/' + ${p.image}}" ></td>
+            <td><img width="100" height="100" th:src="@{'/image/' + ${p.image}}" alt="Product Image"></td>
         </tr>
     </table>
-    <p>
-        <a th:href="@{/products/create}">
-            Add new product
-        </a>
-    </p>
+
+<!--    <div class="grid">-->
+<!--        <div th:each="p : ${products}" class="product-card">-->
+<!--            &lt;!&ndash; Product Image &ndash;&gt;-->
+<!--            <div class="image-container">-->
+<!--&lt;!&ndash;                <img th:src="@{'/image/' + ${p.image}}" alt="Product Image">&ndash;&gt;-->
+<!--                <img width="100" height="100" th:src="@{'/image/' + ${p.image}}" >-->
+<!--                &lt;!&ndash; Hover Buttons &ndash;&gt;-->
+<!--                <div class="hover-buttons">-->
+<!--                    <a th:href="@{/products/{id}/edit(id=${p.getId()})}">-->
+<!--                        <i class="fas fa-edit"></i>-->
+<!--                    </a>-->
+<!--                    <a th:href="@{/products/{id}/delete(id=${p.getId()})}" class="delete">-->
+<!--                        <i class="fas fa-trash"></i>-->
+<!--                    </a>-->
+<!--                </div>-->
+<!--            </div>-->
+
+<!--            &lt;!&ndash; Product Info &ndash;&gt;-->
+<!--            <div class="product-info">-->
+<!--                <h4 th:text="${p.name}"></h4>-->
+<!--                <p th:text="${p.description}"></p>-->
+<!--                <div class="details">-->
+<!--                    <span class="price" th:text="${p.price}"></span>-->
+<!--                    <span class="manufacturer" th:text="${p.manufacturer}"></span>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+
+
 
 </div>
 <footer th:replace="/layout :: footer"></footer>
